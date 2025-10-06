@@ -1,0 +1,314 @@
+@import './app/shared/responsive-utilities.css';
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-primary: #00ff9d;
+    --color-secondary: #0066ff;
+    --color-yellow: #ffdd00;
+    --color-red: #ff0066;
+    --color-purple: #9900ff;
+    --color-background: #ffffff;
+    --text-color: #333333;
+    --indicator-size: 12px;
+    --indicator-spacing: 2rem;
+    --indicator-total-height: 8rem;
+}
+
+html {
+    scroll-snap-type: none;
+    timeline-scope: --section, --main, --site-header;
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--color-background);
+    transition: background-color 0.3s ease;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* HOME PAGE - पूरा screen cover करने के लिए */
+body:has(app-home) {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #40DDDD 100%) !important;
+    color: white !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+body:has(app-home) .container {
+    max-width: none !important;
+    width: 100vw !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    padding-top: 0 !important;
+}
+
+body:has(app-home) app-header {
+    background: rgba(0, 0, 0, 0.1) !important;
+    backdrop-filter: blur(20px) !important;
+    width: 100vw !important;
+}
+
+body:has(app-home) app-footer {
+    background: rgba(0, 0, 0, 0.1) !important;
+    backdrop-filter: blur(20px) !important;
+    color: white !important;
+    width: 100vw !important;
+}
+
+/* HEADER - Completely isolated styling */
+app-header {
+    margin: 0 !important;
+    padding: 0 !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1000 !important;
+}
+
+/* MAIN CONTAINER - Clean separation */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    min-height: auto;
+    margin-top: 0;
+    padding-top: 80px;
+    background: transparent;
+}
+
+/* OTHER PAGES - Normal behavior */
+body:not(:has(app-home)) {
+    background: var(--color-background) !important;
+    color: var(--text-color) !important;
+}
+
+body:not(:has(app-home)) .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    padding-top: 80px;
+}
+
+/* SERVICES PAGE - Complete dark theme without gaps */
+body:has(.services-page) {
+    background: #0d1117 !important;
+}
+
+body:has(.services-page) .container {
+    max-width: none;
+    padding: 0;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.services-page {
+    margin: 0;
+    padding: 90px clamp(1rem,4vw,3.5rem) 0 clamp(1rem,4vw,3.5rem);
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Fira Sans',sans-serif;
+    overflow: hidden;
+}
+
+body:has(.services-page) app-footer {
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+}
+
+body:has(.services-page) app-footer::before {
+    display: none;
+}
+
+/* ABOUT PAGE - Complete theme */
+body:has(.about-shell) {
+    background: #0d1117 !important;
+}
+
+body:has(.about-shell) .container {
+    max-width: none;
+    padding: 0;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.about-shell {
+    margin: 0;
+    padding: 90px clamp(1rem,4vw,3.5rem) 0 clamp(1rem,4vw,3.5rem);
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Fira Sans',sans-serif;
+    overflow: hidden;
+}
+
+body:has(.about-shell) app-footer {
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+}
+
+body:has(.about-shell) app-footer::before {
+    display: none;
+}
+
+/* CONTACT PAGE - Complete theme */
+body:has(.contact-shell) {
+    background: #0d1117 !important;
+}
+
+body:has(.contact-shell) .container {
+    max-width: none;
+    padding: 0;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+/* CSS Scroll-driven animations support */
+@supports (animation-timeline: view()) {
+    .content {
+        animation-timeline: view();
+        animation-range: entry 0% cover 50%;
+    }
+}
+
+/* CTA Panel */
+.cta-panel {
+    margin: 4.5rem auto 0;
+}
+
+/* Custom scrollbar - Light theme for home page */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-secondary);
+}
+
+/* Footer - Let each page control its own footer */
+app-footer {
+    position: relative;
+    z-index: 1000;
+}
+
+
+
+
+/* responsive wala code  */
+
+/* Add this to your existing styles.css file */
+
+/* Global Responsive Reset */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+/* Container responsive utilities */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1200px) {
+  .container {
+    max-width: 992px;
+  }
+}
+
+@media (max-width: 992px) {
+  .container {
+    max-width: 768px;
+  }
+  
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 576px;
+    padding: 0 0.75rem;
+  }
+  
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding: 0 0.5rem;
+  }
+  
+  html {
+    font-size: 13px;
+  }
+}
+
+/* Responsive utilities */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.d-none { display: none; }
+.d-block { display: block; }
+.d-flex { display: flex; }
+
+/* Mobile utilities */
+@media (max-width: 768px) {
+  .d-md-none { display: none; }
+  .d-md-block { display: block; }
+  .text-md-center { text-align: center; }
+}
+
+@media (max-width: 576px) {
+  .d-sm-none { display: none; }
+  .d-sm-block { display: block; }
+  .text-sm-center { text-align: center; }
+}
+

@@ -1,0 +1,235 @@
+<!-- Background Elements -->
+<div class="background-wrapper">
+  <div class="bg-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="shape shape-4"></div>
+    <div class="shape shape-5"></div>
+  </div>
+  <div class="particles">
+    <div class="particle" *ngFor="let i of [].constructor(50); let index = index"></div>
+  </div>
+</div>
+
+<main>
+  <!-- Hero Section with Typewriter -->
+  <section id="home" class="section hero-section">
+    <div class="content hero-content">
+      <div class="hero-text">
+        <div class="animated-title">
+          <div class="welcome-line">
+            <div class="animate-text">
+              <span>W</span><span>e</span><span>l</span><span>c</span><span>o</span><span>m</span><span>e</span>
+            </div>
+            <div class="to-text">to</div>
+          </div>
+          <div class="animate-text company-name">
+            <span>A</span><span>s</span><span>i</span><span>m</span> 
+            <span>S</span><span>h</span><span>i</span><span>k</span><span>s</span><span>h</span><span>a</span>
+          </div>
+        </div>
+        
+        <div class="typewriter-container">
+          <h1 class="typewriter-title">
+            We Provide <span class="typewriter-text">Educational Programs</span>
+            <span class="cursor"></span>
+          </h1>
+        </div>
+        
+        <p class="hero-description">
+          Empowering communities through innovative education and social development initiatives. 
+          Building a brighter future with sustainable solutions and community-focused programs.
+        </p>
+        
+        <div class="hero-buttons">
+          <a routerLink="/services" class="btn btn-primary">
+            <span>Explore All Services</span>
+            <i class="arrow">→</i>
+          </a>
+          <a routerLink="/contact" class="btn btn-secondary">
+            <span>Have a Query?</span>
+            <i class="question">?</i>
+          </a>
+        </div>
+      </div>
+      
+      <div class="hero-visual">
+        <div class="floating-card">
+          <div class="card-content">
+            <h3>🎓 Education First</h3>
+            <p>Quality education for all</p>
+          </div>
+        </div>
+        <div class="floating-card delay-1">
+          <div class="card-content">
+            <h3>🤝 Community Focus</h3>
+            <p>Building stronger communities</p>
+          </div>
+        </div>
+        <div class="floating-card delay-2">
+          <div class="card-content">
+            <h3>🌱 Sustainable Growth</h3>
+            <p>Long-term impact solutions</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="content">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon"></div>
+          <div class="stat-number">2023</div>
+          <div class="stat-label">Established</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"></div>
+          <div class="stat-number">50+</div>
+          <div class="stat-label">Projects Completed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"></div>
+          <div class="stat-number">1000+</div>
+          <div class="stat-label">Lives Impacted</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"></div>
+          <div class="stat-number">10+</div>
+          <div class="stat-label">Active Programs</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section about-modern">
+    <div class="content">
+      <div class="section-header">
+        <h2><strong>About</strong> <em>Our Mission</em></h2>
+        <div class="header-line"></div>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>Established in 2023 and based in Bari, Rajasthan, Asim Shiksha Private Limited is an active organization dedicated to social work and educational development.</p>
+          <div class="feature-list">
+            <div class="feature-item">
+              <span class="icon">✓</span>
+              <span>Community-focused initiatives</span>
+            </div>
+            <div class="feature-item">
+              <span class="icon">✓</span>
+              <span>Educational excellence</span>
+            </div>
+            <div class="feature-item">
+              <span class="icon">✓</span>
+              <span>Sustainable development</span>
+            </div>
+          </div>
+          <a routerLink="/about" class="btn btn-outline">
+            <span>Learn More About Us</span>
+            <i class="arrow">→</i>
+          </a>
+        </div>
+        <div class="about-visual">
+          <div class="mission-image">
+            <div class="mission-icon">🎯</div>
+            <div class="mission-elements">
+              <div class="element education">📚</div>
+              <div class="element community">🏘️</div>
+              <div class="element growth">📈</div>
+              <div class="element innovation">💡</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="section services-modern">
+    <div class="content">
+      <div class="section-header">
+        <h2><strong>Our</strong> <em>Services</em></h2>
+        <div class="header-line"></div>
+      </div>
+      <div class="services-grid">
+        <div class="service-card modern">
+          <div class="service-icon">🎓</div>
+          <h3>Educational Programs</h3>
+          <p>Comprehensive educational initiatives designed to empower communities and foster learning opportunities.</p>
+          <div class="service-features">
+            <span>Skill Development</span>
+            <span>Digital Literacy</span>
+            <span>Career Guidance</span>
+          </div>
+        </div>
+        <div class="service-card modern">
+          <div class="service-icon">🏘️</div>
+          <h3>Social Development</h3>
+          <p>Community-focused programs aimed at creating sustainable social impact and positive change.</p>
+          <div class="service-features">
+            <span>Community Building</span>
+            <span>Social Welfare</span>
+            <span>Rural Development</span>
+          </div>
+        </div>
+      </div>
+      <div class="services-cta">
+        <a routerLink="/services" class="btn btn-primary large">
+          <span>View All Our Services</span>
+          <i class="arrow">→</i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact-modern">
+    <div class="content">
+      <div class="contact-wrapper">
+        <div class="contact-text">
+          <h2><strong>Ready to</strong> <em>Get Started?</em></h2>
+          <p>Have questions about our programs or want to collaborate? We're here to help turn your vision into reality.</p>
+          <div class="contact-features">
+            <div class="contact-item">
+              <span class="icon">📞</span>
+              <span>Quick Response</span>
+            </div>
+            <div class="contact-item">
+              <span class="icon">💬</span>
+              <span>Expert Consultation</span>
+            </div>
+            <div class="contact-item">
+              <span class="icon">🤝</span>
+              <span>Partnership Opportunities</span>
+            </div>
+          </div>
+        </div>
+        <div class="contact-buttons">
+          <a routerLink="/contact" class="btn btn-primary mega">
+            <span>Get in Touch</span>
+            <i class="arrow">→</i>
+          </a>
+          <a href="tel:+91-7425087850" class="btn btn-outline">
+            <span>Call Us Now</span>
+            <i class="phone">📞</i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Enhanced Section Indicator -->
+<nav class="section-indicator modern">
+  <ul class="indicator">
+    <li><a href="#home" class="active" data-tooltip="Home"></a></li>
+    <li><a href="#about" data-tooltip="About"></a></li>
+    <li><a href="#services" data-tooltip="Services"></a></li>
+    <li><a href="#contact" data-tooltip="Contact"></a></li>
+  </ul>
+</nav>

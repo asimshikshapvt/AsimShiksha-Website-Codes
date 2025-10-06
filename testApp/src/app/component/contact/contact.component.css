@@ -1,0 +1,824 @@
+@import url('https://fonts.googleapis.com/css?family=Exo:700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Abel&display=swap');
+
+/* Root layout */
+.contact-shell {
+    --bg: #f7fafc;
+    --card-bg-sleep: #ffffff;
+    --card-bg-awake: #f4f8f4;
+    --card-border-sleep: #e2e8f0;
+    --card-border-awake: #b5cbb7;
+    --text-primary: #1a3d1a;
+    --text-secondary: #3d5c3d;
+    --text-muted: #6b7c6b;
+    --text-sleep: #a0bfa0;
+    --accent: #217a3a;
+    --accent2: #1a237e;
+    --accent-grad: linear-gradient(135deg,#217a3a 0%,#1a237e 100%);
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --shadow-1: 0 4px 16px -4px rgba(33,122,58,0.08),0 2px 4px -1px rgba(33,122,58,0.06);
+    --shadow-focus: 0 0 0 1px #b5cbb7,0 0 0 4px #1a237e33;
+    --glow-primary: 0 0 20px #1a237e33;
+    --glow-secondary: 0 0 20px #217a3a33;
+    
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: 90px clamp(1rem,4vw,3.5rem) 6rem;
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Fira Sans',sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.contact-shell::before,
+.contact-shell::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 12% 18%,#e6f4ea 30%,transparent 60%),
+        radial-gradient(circle at 88% 72%,#b5cbb7 25%,transparent 65%),
+        radial-gradient(circle at 50% 50%,#d1e7dd 20%,transparent 70%);
+    mix-blend-mode: plus-lighter;
+    pointer-events: none;
+    mask: linear-gradient(#000,transparent 85%);
+}
+.contact-shell::after { 
+    filter: blur(60px); 
+    opacity: .2; 
+}
+
+/* Hero Section */
+.contact-hero {
+    max-width: 1000px;
+    margin: 0 auto 3rem;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    background: var(--card-bg-awake);
+    border: 2px solid var(--card-border-awake);
+    border-radius: var(--radius-lg);
+    padding: clamp(2.5rem,4vw,3.5rem) clamp(1.5rem,4vw,2.5rem);
+    box-shadow: var(--shadow-1), var(--glow-primary);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+}
+
+.contact-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,#e6f4ea 8%,#f4f8f4 92%);
+    border-radius: inherit;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+.contact-hero .inner {
+    position: relative;
+    z-index: 2;
+}
+
+.contact-hero h1 {
+    font-size: clamp(2.5rem,5vw,3.8rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #14213d;
+    margin: 0 0 1.2rem;
+    line-height: 1.05;
+    filter: drop-shadow(0 4px 8px #1a237e22);
+}
+
+.contact-hero h1 .kicker {
+    display: inline-block;
+    font-size: .95rem;
+    letter-spacing: .15em;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    color: var(--accent2);
+    background: #e6f4ea;
+    border: 1px solid #1a237e;
+    padding: .6rem 1.4rem;
+    border-radius: 999px;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 4px 12px #1a237e22;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-hero h1 .kicker::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, #1a237e 40%, transparent);
+    transform: translateX(-100%);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    100% { transform: translateX(100%); }
+}
+
+.contact-hero h1 .brand {
+    display: block;
+    color: var(--accent);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+}
+
+.contact-hero .lead {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-size: clamp(1rem,1.8vw,1.2rem);
+    color: var(--text-secondary);
+    font-weight: 500;
+    text-shadow: 0 2px 4px #1a237e22;
+}
+
+/* Form Container - Made much wider and more rectangular */
+.contact-form-container {
+    max-width: 1000px; /* Increased from 600px */
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    transition: all 0.8s cubic-bezier(0.34, 1.56, 0.4, 1);
+}
+
+.contact-form-container.submitted {
+    transform: scale(1.05);
+}
+
+/* Form Card - More rectangular shape */
+.form-card {
+    background: var(--card-bg-sleep);
+    border: 2px solid var(--card-border-sleep);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem 4rem; /* Increased horizontal padding from 2rem to 4rem */
+    box-shadow: var(--shadow-1), var(--glow-secondary);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.6s ease;
+    min-height: 500px; /* Added minimum height for more rectangular look */
+}
+
+.form-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #e6f4ea 15%, transparent 50%);
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.form-card:hover {
+    border-color: var(--card-border-awake);
+    box-shadow: var(--shadow-1), var(--glow-primary);
+}
+
+/* Form Header */
+.form-header {
+    text-align: center;
+    margin-bottom: 2.5rem; /* Increased spacing */
+}
+
+.form-header h2 {
+    font-family: 'Exo', sans-serif;
+    font-size: 2.2rem; /* Slightly increased */
+    font-weight: 800;
+    color: #14213d;
+    margin: 0 0 1rem;
+    letter-spacing: -0.02em;
+    background: var(--accent-grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.form-header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem; /* Increased from 1rem */
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Form Styling - Two column layout for wider form */
+.contact-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 2rem 3rem; /* Increased gaps - vertical and horizontal */
+    align-items: start;
+}
+
+/* Make message field span full width */
+.input-group.full-width {
+    grid-column: 1 / -1;
+}
+
+/* Submit container spans full width */
+.submit-container {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: 2rem; /* Increased from 1.5rem */
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 1rem; /* Increased from 0.8rem */
+}
+
+.input-label {
+    display: block;
+    font-size: 0.95rem; /* Slightly increased */
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.6rem; /* Increased spacing */
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+    width: 100%;
+    padding: 1rem 1.2rem; /* Increased padding for better proportions */
+    border: 2px solid var(--card-border-sleep);
+    border-radius: var(--radius-sm);
+    background: #fff;
+    color: var(--text-primary);
+    font-size: 1rem; /* Increased back to 1rem */
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+    box-sizing: border-box;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: var(--shadow-focus);
+}
+
+.form-input.error,
+.form-textarea.error,
+.form-select.error {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 1px #dc3545, 0 0 0 4px rgba(220, 53, 69, 0.2);
+}
+
+.input-focus-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--accent-grad);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+}
+
+.form-input:focus + .input-focus-line,
+.form-textarea:focus + .input-focus-line {
+    transform: scaleX(1);
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 120px; /* Increased back for better proportions */
+    font-family: inherit;
+}
+
+/* Select Dropdown */
+.select-wrapper {
+    position: relative;
+}
+
+.form-select {
+    appearance: none;
+    cursor: pointer;
+    padding-right: 3rem;
+}
+
+.select-arrow {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--text-muted);
+    transition: all 0.3s ease;
+}
+
+.form-select:focus + .select-arrow {
+    color: var(--accent);
+    transform: translateY(-50%) rotate(180deg);
+}
+
+/* Error Messages */
+.error-message {
+    color: #dc3545;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+.input-group:has(.error) .error-message,
+.form-input.error ~ .error-message,
+.form-textarea.error ~ .error-message,
+.form-select.error ~ .error-message {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.submit-hint {
+    margin-top: 1rem; /* Increased spacing */
+    color: var(--text-muted);
+    font-size: 0.9rem; /* Increased from 0.85rem */
+    font-weight: 500;
+}
+
+input[type='checkbox'] {
+    display: none;
+}
+
+.send {
+    --hue: 217deg;
+    position: relative;
+    width: 8rem;
+    height: 8rem;
+    perspective: 66rem;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+}
+
+.send.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.send * {
+    transition: all 1s;
+}
+
+.send .rotate {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.send .move {
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.send .part {
+    position: absolute;
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+}
+
+.send .part::before,
+.send .part::after {
+    content: 'SEND';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-grad);
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.95);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-1);
+    font-family: 'Exo', sans-serif;
+    letter-spacing: 0.1em;
+}
+
+.send .part.left::before {
+    transform-origin: 50% 25%;
+    clip-path: polygon(0 0, 100% 0, 100% 1px, 0 calc(50% + 1px));
+}
+
+.send .part.left::after {
+    clip-path: polygon(0 50%, 100% 0, 100% 1px, 1px 100%, 0 100%);
+}
+
+.send .part.right::before {
+    clip-path: polygon(0 100%, 100% 0, 100% 1px, calc(50% + 1px) 100%, 50% 100%);
+}
+
+.send .part.right::after {
+    transform-origin: 75% 50%;
+    clip-path: polygon(100% 0, 50% 100%, 100% 100%);
+}
+
+#send:checked ~ .send .rotate {
+    transform: rotate3d(1, -0.2, 0.2, 65deg);
+}
+
+#send:checked ~ .send .move {
+    animation: fly 3s cubic-bezier(0.72, -0.23, 0.35, 1.03) 1s both;
+}
+
+#send:checked ~ .send .part.left {
+    transform: rotate3d(-1, 1, 0, 60deg);
+}
+
+#send:checked ~ .send .part.left::before {
+    transform: rotate3d(-1, 0.5, 0, -60deg);
+}
+
+#send:checked ~ .send .part.left::after {
+    background: linear-gradient(135deg, #145c2c 0%, #1a237e 100%);
+}
+
+#send:checked ~ .send .part.right {
+    transform: rotate3d(-1, 1, 0, -60deg);
+}
+
+#send:checked ~ .send .part.right::before {
+    background: linear-gradient(135deg, #0f4a23 0%, #141b5c 100%);
+}
+
+#send:checked ~ .send .part.right::after {
+    transform: rotate3d(-0.25, 0.5, 0, 100deg);
+}
+
+@keyframes fly {
+    0% {
+        transform: translate3D(0, 0, 0rem);
+    }
+    50% {
+        transform: translate3D(400rem, -400rem, 0rem);
+    }
+    50.00001% {
+        transform: translate3D(-100rem, 100rem, 0rem);
+    }
+    100% {
+        transform: translate3D(0rem, 0rem, 0rem);
+    }
+}
+
+/* Thank You Card */
+.thank-you-card {
+    background: linear-gradient(135deg, #e6f4ea 0%, #f4f8f4 100%);
+    border: 2px solid var(--accent);
+    border-radius: var(--radius-lg);
+    padding: 3rem 2.5rem;
+    text-align: center;
+    box-shadow: var(--shadow-1), var(--glow-secondary);
+    animation: slideInUp 0.8s cubic-bezier(0.34, 1.56, 0.4, 1);
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.success-icon {
+    margin: 0 auto 2rem;
+    animation: bounceIn 1s ease 0.5s both;
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) rotate(-180deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1) rotate(-5deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+.thank-you-card h2 {
+    font-family: 'Exo', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent);
+    margin: 0 0 1rem;
+    animation: fadeInUp 0.6s ease 0.8s both;
+}
+
+.thank-you-card p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin: 0 0 1rem;
+    font-weight: 500;
+    animation: fadeInUp 0.6s ease 1s both;
+}
+
+.thank-you-card .small-text {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    animation: fadeInUp 0.6s ease 1.2s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.back-btn {
+    background: var(--accent-grad);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: var(--radius-sm);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Exo', sans-serif;
+    letter-spacing: 0.02em;
+    box-shadow: var(--shadow-1);
+    animation: fadeInUp 0.6s ease 1.4s both;
+}
+
+.back-btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(33, 122, 58, 0.3);
+}
+
+.back-btn:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* Submitting state */
+.submit-hint.submitting {
+    color: var(--accent);
+    font-weight: 600;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.7;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Error Card */
+.error-card {
+    background: linear-gradient(135deg, #ffeaea 0%, #ffebeb 100%);
+    border: 2px solid #dc3545;
+    border-radius: var(--radius-lg);
+    padding: 3rem 2.5rem;
+    text-align: center;
+    box-shadow: 0 4px 16px -4px rgba(220, 53, 69, 0.2);
+    animation: slideInUp 0.8s cubic-bezier(0.34, 1.56, 0.4, 1);
+}
+
+.error-icon {
+    margin: 0 auto 2rem;
+    animation: shakeIn 1s ease 0.5s both;
+}
+
+@keyframes shakeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) rotate(-180deg);
+    }
+    25% {
+        opacity: 1;
+        transform: scale(1.1) rotate(-10deg);
+    }
+    50% {
+        transform: scale(0.9) rotate(5deg);
+    }
+    75% {
+        transform: scale(1.05) rotate(-2deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+.error-card h2 {
+    font-family: 'Exo', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #dc3545;
+    margin: 0 0 1rem;
+    animation: fadeInUp 0.6s ease 0.8s both;
+}
+
+.error-card p {
+    font-size: 1.1rem;
+    color: #721c24;
+    margin: 0 0 2rem;
+    font-weight: 500;
+    animation: fadeInUp 0.6s ease 1s both;
+}
+
+.error-btn {
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+}
+
+.error-btn:hover {
+    background: linear-gradient(135deg, #c82333 0%, #bd2130 100%);
+    box-shadow: 0 8px 25px rgba(220, 53, 69, 0.3);
+}
+
+/* Loading state for submit button */
+.send.submitting {
+    pointer-events: none;
+}
+
+.send.submitting .part::before,
+.send.submitting .part::after {
+    animation: buttonPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes buttonPulse {
+    0%, 100% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .contact-form-container {
+        max-width: 800px;
+    }
+    
+    .form-card {
+        padding: 2.5rem 3rem;
+    }
+    
+    .contact-form {
+        gap: 1.5rem 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-shell {
+        padding: 70px 1rem 4rem;
+    }
+    
+    .contact-hero {
+        padding: 2rem 1.2rem;
+        margin-bottom: 2rem;
+        max-width: 95%;
+    }
+    
+    .contact-form-container {
+        max-width: 95%;
+    }
+    
+    .form-card {
+        padding: 2rem 1.5rem;
+        min-height: auto;
+    }
+    
+    /* Single column layout on mobile */
+    .contact-form {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+    
+    .input-group.full-width {
+        grid-column: 1;
+    }
+    
+    .submit-container {
+        grid-column: 1;
+    }
+    
+    .form-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .send {
+        width: 7rem;
+        height: 7rem;
+    }
+    
+    .send .part::before,
+    .send .part::after {
+        font-size: 1.1rem;
+    }
+    
+    .thank-you-card,
+    .error-card {
+        padding: 2.5rem 1.8rem;
+    }
+    
+    .thank-you-card h2,
+    .error-card h2 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-form {
+        gap: 1rem;
+    }
+    
+    .input-group {
+        margin-bottom: 0.6rem;
+    }
+    
+    .send {
+        width: 6rem;
+        height: 6rem;
+    }
+    
+    .send .part::before,
+    .send .part::after {
+        font-size: 1rem;
+    }
+
+    .form-card {
+        padding: 1.5rem 1rem;
+    }
+
+    .contact-hero {
+        padding: 1.5rem 1rem;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .send *,
+    .thank-you-card,
+    .success-icon,
+    .form-card,
+    .contact-hero h1 .kicker::before {
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    .send .move {
+        animation: none !important;
+    }
+}
+
+/* Focus States for Accessibility */
+.form-input:focus-visible,
+.form-textarea:focus-visible,
+.form-select:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.send:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+.back-btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}

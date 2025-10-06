@@ -1,0 +1,61 @@
+<header class="header" [class.scrolled]="isScrolled">
+    <nav class="navbar">
+        <div class="logo">
+            <a routerLink="/">Asim Shiksha Private Limited</a>
+        </div>
+        
+        <button class="mobile-menu-btn" [class.open]="isMobileMenuOpen" (click)="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <ul class="nav-links" [class.active]="isMobileMenuOpen">
+            <li>
+                <a routerLink="/" 
+                   routerLinkActive="active" 
+                   [routerLinkActiveOptions]="{exact: true}"
+                   class="flip-link"
+                   (click)="closeMobileMenu()">
+                    <div class="face front">Home</div>
+                    <div class="face back">Home</div>
+                    <div class="face right">Home</div>
+                    <div class="face left">Home</div>
+                </a>
+            </li>
+            <li>
+                <a routerLink="/about" 
+                   routerLinkActive="active"
+                   class="flip-link"
+                   (click)="closeMobileMenu()">
+                    <div class="face front">About</div>
+                    <div class="face back">About</div>
+                    <div class="face right">About</div>
+                    <div class="face left">About</div>
+                </a>
+            </li>
+            <li>
+                <a routerLink="/services" 
+                   routerLinkActive="active"
+                   class="flip-link"
+                   (click)="closeMobileMenu()">
+                    <div class="face front">Services</div>
+                    <div class="face back">Services</div>
+                    <div class="face right">Services</div>
+                    <div class="face left">Services</div>
+                </a>
+            </li>
+            <li>
+                <a routerLink="/contact" 
+                   routerLinkActive="active" 
+                   class="flip-link contact-link"
+                   (click)="closeMobileMenu()">
+                    <div class="face front">Contact</div>
+                    <div class="face back">Contact</div>
+                    <div class="face right">Contact</div>
+                    <div class="face left">Contact</div>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
